@@ -13,13 +13,22 @@ var appData = {
     savings : false
 };
 
-let a1 = prompt("Введите обязательную статью расходов в этом месяце", ''),
-	a2 = prompt("Во сколько обойдется?", ''),
-	a3 = prompt("Введите обязательную статью расходов в этом месяце", ''),
-	a4 = prompt("Во сколько обойдется?", '');
 
-appData.expenses.a1 = a2;
-appData.expenses.a3 = a4;
+let a, b;
 
-alert("Бюджет на день" +  appData.budget / 30);
-alert(appData.expenses.a1 + appData.expenses.a2 + appData.expenses.a3 + appData.expenses.a4);
+for (let i=1; i<3; i++){
+    a = prompt("Введите обязательную статью расходов в этом месяце", '');
+    b = prompt("Во сколько обойдется?", '');
+    if (a != '' && typeof(a) ==="string" && typeof(a)!=null && 
+        b != '' && typeof(b) ==="string" && typeof(b)!=null)  {
+        appData.expenses[a] = b;
+        }
+        else
+          {
+              alert("Неправильно ввели, попробуйте еще раз!");
+              i--;
+          }
+}
+
+appData.MoneyPerDay = appData.budget / 30;
+alert("Бюджет на день" +  appData.MoneyPerDay);
